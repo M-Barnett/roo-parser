@@ -4,6 +4,7 @@ Proof of concept for parsing deliveroo sites for specific options to get some mu
 ## System Requirements
 These are system recommendations, the programme may work on other configurations.</br>
 
+
 Python 3.9.0</br>
 BeautifulSoup 4.9.3
 
@@ -18,7 +19,7 @@ whatever word you want to search for.
 
 The default word is set to "chicken".
 
-To test more values, change or remove the indices where specified.
+To test more values, change or remove the indices where specified (line 38).
 
 ## Next Steps
 * Print values to CSVs
