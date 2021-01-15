@@ -17,7 +17,8 @@ The proof of concept is fairly basic, as of January 14, 2021 the use is as follo
 Run the code with the command `python parser.py $WORD`, replacing `$WORD` with
 whatever word you want to search for.
 
-The default word is set to "chicken".
+If you don't put a word or put something that does not work, 
+the default word is set to "chicken".
 
 To test more values, change or remove the indices where specified (line 38).
 
