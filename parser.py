@@ -2,6 +2,7 @@
 Proof of concept parser to enter each webpage and check for a specific word
 """
 import requests
+import collections
 import re
 import time
 import csv
@@ -25,18 +26,21 @@ def restaurant_finder():
             href_links.append(a)
 
     # print statements here are just to show the retrieved urls look right
-    print("href_links are: ")
-    print(href_links[0:6])
-    print("") 
+#    print("href_links are: ")
+#    print(href_links[0:6])
+#    print("") 
 
     return href_links
 
 def restaurant_checker(word, href_links):
     """ Function to check if the word is in each restaurant's page """
-    pages_with_word = []
+    # create a dictionary to contain the restaurant and boolean
+    restaurant_data = []
     
-    for link in href_links[0:3]: # change/remove indices to parse more restaurants
+    # loop over the list of restaurant pages
+    for link in href_links[0:10]: # change/remove indices to parse more restaurants
         # need to convert and extract info from links
+        restaurant_dictionary = {'Name' : [], 'Boolean' : []}
         restaurant_url = link['href']
         restaurant_name = str(link.string)
 
@@ -51,9 +55,12 @@ def restaurant_checker(word, href_links):
         
         # check if the text of the restaurant's page contains the word we want
         page_check = text_checker(word, restaurant_text) 
-        if page_check == True:
-            pages_with_word.append(restaurant_name)
-    return pages_with_word
+        # add the restaurant name and boolean to the dictionary
+        restaurant_dictionary['Name'] = restaurant_name
+        restaurant_dictionary['Boolean'] = page_check
+        restaurant_data.append(restaurant_dictionary)
+
+    return restaurant_data
 
 def text_checker(word, text):
     """ Function to check for a specific word in the text """
@@ -65,10 +72,27 @@ def text_checker(word, text):
         result = False
     return result
 
+################# CSV Stuff ############################
+
+def csv_generator(restaurant_data):
+    csv_columns = ['Name', 'Boolean']
+    csv_file = 'restaurant_test.csv'
+    try:
+        with open(csv_file, 'w', newline='') as csvfile:
+            res_writer = csv.DictWriter(csvfile, fieldnames=csv_columns)
+            res_writer.writeheader()
+            for data in restaurant_data:
+                res_writer.writerow(data)
+        print("CSV successfully written to " + csv_file)
+    except IOError:
+        print("I/O error occurred while writing csv")
+
 ############### Run Management #####################
 
 
 def main():
+    
+    # IO Stuff
     if len(sys.argv) == 1:
         test_word = "chicken" # change this to whatever word you want as your default
         print("Default option selected, running with test word \"" + test_word + "\"...\n")
@@ -83,13 +107,17 @@ def main():
         print("Something is wrong with your input, proceeding with default")
         print("Default option selected, running with test word \"" + test_word + "\"...\n") 
 
+
+    # Running the Functions
     restaurant_html = restaurant_finder()
-    result = restaurant_checker(test_word, restaurant_html)
-    
-    print("\nPages with " + test_word.lower() + " are:")
-    print(result)
+    restaurant_data = restaurant_checker(test_word, restaurant_html)
+    csv_generator(restaurant_data)
 
-
+    print("\nResults of search for " + test_word.lower() + ": ")
+ 
+    # loop over resulting dictionary and print values
+    for item in restaurant_data:
+        print(item)
 
 
 main()
