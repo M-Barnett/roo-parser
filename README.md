@@ -9,21 +9,43 @@ Python 3.9.0</br>
 BeautifulSoup 4.9.3
 
 ## Installation
-`pip install beautifulsoup4`
+All packages not mentioned here should be included in Python 3.</br>
+
+Install the BeautifulSoup package (Python 3) for parsing the html.</br>
+`pip3 install beautifulsoup4`
 
 ## Use
-The proof of concept is fairly basic, as of January 14, 2021 the use is as follows:
+The proof of concept is fairly basic, as of January 15, 2021 the use is as follows:
 
-Run the code with the command `python parser.py $WORD`, replacing `$WORD` with
-whatever word you want to search for.
+### Default Run
+Command: `python parser.py` </br>
+_N.B._ if your python command is not mapped to Python 3 you may
+need to instead use the command `python3`)</br>
 
-If you don't put a word or put something that does not work, 
-the default word is set to "chicken".
+### Additional Arguments
+*Word*</br>
+Command: `python parser.py $WORD`</br>
+Replace `$WORD` with the word you want to search for.</br>
 
-To test more values, change or remove the indices where specified (line 38).
+*CSV Name*
+Comand: `python parser.py $WORD $CSV_NAME`</br>
+Replace `$WORD` with the word you want to search for.</br>
+Replace `$CSV_NAME` with the name of the file you want to save to.</br>
+_N.B._ The `$CSV_NAME` should be a simple string, the code will add ".csv" to
+the end of it.
+</br> As of January 15, 2020 you must have a `$WORD` argument to have a
+`$CSV_NAME` argument, but this should hopefully be changed soon.
+
+### Output
+The code is currently limited to only parse a few pages for efficient testing,
+to test more values, change or remove the indices in the `restaurant_checker`
+function in `parser.py` where specified (line 41).
+
+The code writes the results to a csv file with Name and a Boolean fields
+displaying whether or not the word was found for a given restaurant. 
 
 ## Next Steps
-* Print values to CSVs
+* Add flagging for arguments so `$CSV_NAME`can be specified without `$WORD`
 * Separate restaurants by region
 * Allow for specific restaurant selection?
 * Adjust to find more than just text

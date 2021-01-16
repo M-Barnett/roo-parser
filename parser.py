@@ -74,9 +74,9 @@ def text_checker(word, text):
 
 ################# CSV Stuff ############################
 
-def csv_generator(restaurant_data):
+def csv_generator(restaurant_data, csv_name):
     csv_columns = ['Name', 'Boolean']
-    csv_file = 'restaurant_test.csv'
+    csv_file = csv_name
     try:
         with open(csv_file, 'w', newline='') as csvfile:
             res_writer = csv.DictWriter(csvfile, fieldnames=csv_columns)
@@ -93,16 +93,34 @@ def csv_generator(restaurant_data):
 def main():
     
     # IO Stuff
+    # default values for test_word and csv_name
+    test_word = "chicken"
+    csv_name = "restaurant_test.csv"
+
     if len(sys.argv) == 1:
-        test_word = "chicken" # change this to whatever word you want as your default
-        print("Default option selected, running with test word \"" + test_word + "\"...\n")
+        print("Default option selected, running with test word \"" + test_word + "\"...")
+        print("Output will be stored in " + csv_name + "...\n")
     elif len(sys.argv) == 2:
         try:
             test_word = str(sys.argv[1])
-            print("Running with test word \"" + test_word + "\"...\n")
+            print("Running with test word \"" + test_word + "\"...")
+            print("Output will be stored in " + csv_name + "...\n")
         except:
             print("Something was wrong with your input, proceeding with default")
-            print("Default option selected, running with test word \"" + test_word + "\"...\n")
+            print("Default option selected, running with test word \"" + test_word + "\"...")
+            print("Output will be stored in " + csv_name + "...\n")
+    elif len(sys.argv) == 3:
+        try:
+            test_word = str(sys.argv[1])
+            csv_name = str(sys.argv[2]) + ".csv"
+            print("Running with test word \"" + test_word + "\"...")
+            print("Output will be stored in " + csv_name + "...\n")
+        except:
+            print("Something was wrong with your input, proceeding with default")
+            print("Default option selected, running with test word \"" + test_word + "\"...") 
+            print("Output will be stored in " + csv_name + "...\n")
+
+
     else:
         print("Something is wrong with your input, proceeding with default")
         print("Default option selected, running with test word \"" + test_word + "\"...\n") 
@@ -111,7 +129,7 @@ def main():
     # Running the Functions
     restaurant_html = restaurant_finder()
     restaurant_data = restaurant_checker(test_word, restaurant_html)
-    csv_generator(restaurant_data)
+    csv_generator(restaurant_data, csv_name)
 
     print("\nResults of search for " + test_word.lower() + ": ")
  
