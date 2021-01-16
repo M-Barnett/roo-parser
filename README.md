@@ -19,18 +19,20 @@ The proof of concept is fairly basic, as of January 15, 2021 the use is as follo
 
 ### Default Run
 Command: `python parser.py` </br>
+
 _N.B._ if your python command is not mapped to Python 3 you may
 need to instead use the command `python3`)</br>
 
 ### Additional Arguments
-*Word*</br>
+**Word**</br>
 Command: `python parser.py $WORD`</br>
-Replace `$WORD` with the word you want to search for.</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Replace `$WORD` with the word you want to search for.</br>
 
-*CSV Name*
+**CSV Name**</br>
 Comand: `python parser.py $WORD $CSV_NAME`</br>
-Replace `$WORD` with the word you want to search for.</br>
-Replace `$CSV_NAME` with the name of the file you want to save to.</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Replace `$WORD` with the word you want to search for.</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Replace `$CSV_NAME` with the name of the file you want to save to.</br>
+
 _N.B._ The `$CSV_NAME` should be a simple string, the code will add ".csv" to
 the end of it.
 </br> As of January 15, 2020 you must have a `$WORD` argument to have a
