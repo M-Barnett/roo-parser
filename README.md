@@ -35,7 +35,7 @@ need to instead use the command `python3`)</br>
 </br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _N.B._ The `$CSV_NAME` should be a simple string, the code will add ".csv" to
 the end of it.
-</br> As of January 15, 2020 you must have a `$WORD` argument to have a
+</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; As of January 15, 2020 you must have a `$WORD` argument to have a
 `$CSV_NAME` argument, but this should hopefully be changed soon.
 
 ### Output
