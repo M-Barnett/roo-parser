@@ -5,8 +5,8 @@ Proof of concept for parsing deliveroo sites for specific options to get some mu
 These are system recommendations, the programme may work on other configurations.</br>
 
 
-Python 3.9.0</br>
-BeautifulSoup 4.9.3
+_Python 3.9.0_</br>
+_BeautifulSoup 4.9.3_
 
 ## Installation
 All packages not mentioned here should be included in Python 3.</br>
@@ -19,21 +19,21 @@ The proof of concept is fairly basic, as of January 15, 2021 the use is as follo
 
 ### Default Run
 Command: `python parser.py` </br>
-
+</br>
 _N.B._ if your python command is not mapped to Python 3 you may
 need to instead use the command `python3`)</br>
 
 ### Additional Arguments
 **Word**</br>
-Command: `python parser.py $WORD`</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Replace `$WORD` with the word you want to search for.</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Command: `python parser.py $WORD`</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Replace `$WORD` with the word you want to search for.</br>
 
 **CSV Name**</br>
-Comand: `python parser.py $WORD $CSV_NAME`</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Replace `$WORD` with the word you want to search for.</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Replace `$CSV_NAME` with the name of the file you want to save to.</br>
-
-_N.B._ The `$CSV_NAME` should be a simple string, the code will add ".csv" to
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Comand: `python parser.py $WORD $CSV_NAME`</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Replace `$WORD` with the word you want to search for.</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Replace `$CSV_NAME` with the name of the file you want to save to.</br>
+</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _N.B._ The `$CSV_NAME` should be a simple string, the code will add ".csv" to
 the end of it.
 </br> As of January 15, 2020 you must have a `$WORD` argument to have a
 `$CSV_NAME` argument, but this should hopefully be changed soon.
