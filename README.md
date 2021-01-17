@@ -21,7 +21,7 @@ The proof of concept is fairly basic, as of January 15, 2021 the use is as follo
 Command: `python parser.py` </br>
 </br>
 _N.B._ if your python command is not mapped to Python 3 you may
-need to instead use the command `python3`</br>
+need to instead use the command `python3`.</br>
 
 ### Additional Arguments
 **Word**</br>
