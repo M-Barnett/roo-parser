@@ -1,5 +1,5 @@
 # roo_parser
-Proof of concept for parsing deliveroo sites for specific options to get some munch
+Proof of concept for parsing deliveroo sites for specific options to get some munch.
 
 ## System Requirements
 These are system recommendations, the programme may work on other configurations.</br>
@@ -21,7 +21,7 @@ The proof of concept is fairly basic, as of January 15, 2021 the use is as follo
 Command: `python parser.py` </br>
 </br>
 _N.B._ if your python command is not mapped to Python 3 you may
-need to instead use the command `python3`)</br>
+need to instead use the command `python3`</br>
 
 ### Additional Arguments
 **Word**</br>
