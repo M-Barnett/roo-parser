@@ -50,6 +50,8 @@ The code writes the results to a csv file with Name and a Boolean fields
 displaying whether or not the word was found for a given restaurant. 
 
 ## Next Steps
+* Add location specification "menu/london/..."
+* Add link to restaurant on CSV for easy access
 * Add flagging for arguments so `$CSV_NAME`can be specified without `$WORD`
 * Separate restaurants by region
 * Allow for specific restaurant selection?
