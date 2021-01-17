@@ -30,13 +30,11 @@ need to instead use the command `python3`.</br>
 **Location**</br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Command: `python parser.py $LOCATION`</br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Replace `$LOCATION` with the location you want to search for.</br>
-
 </br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _N.B._ The `$LOCATION` must be in the
+_N.B._ The `$LOCATION` must be in the
 form of the url, e.g. 
-</br>`london`
-</br>`london/bexleyheath`
-</br>`aberdeen/hazelhead`
+</br> for all London restaurant locations you would use `london`
+</br> for more specific options could do `london/bexleyheath` or `aberdeen/hazelhead`
 </br>
 
 **CSV Name**</br>
@@ -44,7 +42,7 @@ form of the url, e.g.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Replace `$LOCATION` with the location you want to search for.</br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Replace `$CSV_NAME` with the name of the file you want to save to.</br>
 </br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _N.B._ The `$CSV_NAME` should be a simple string, the code will add ".csv" to
+_N.B._ The `$CSV_NAME` should be a simple string, the code will add ".csv" to
 the end of it, e.g.
 </br> `bexley_restaurants`
 </br> `csvexample`
