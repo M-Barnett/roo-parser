@@ -40,7 +40,7 @@ def restaurant_checker(word, href_links):
     # loop over the list of restaurant pages
     for link in href_links[0:10]: # change/remove indices to parse more restaurants
         # need to convert and extract info from links
-        restaurant_dictionary = {'Name' : [], 'Boolean' : []}
+        restaurant_dictionary = {'Name' : [], 'Sale' : [], 'URL' : []}
         restaurant_url = link['href']
         restaurant_name = str(link.string)
 
@@ -57,7 +57,8 @@ def restaurant_checker(word, href_links):
         page_check = text_checker(word, restaurant_text) 
         # add the restaurant name and boolean to the dictionary
         restaurant_dictionary['Name'] = restaurant_name
-        restaurant_dictionary['Boolean'] = page_check
+        restaurant_dictionary['Sale'] = page_check
+        restaurant_dictionary['URL'] = total_url
         restaurant_data.append(restaurant_dictionary)
 
     return restaurant_data
@@ -75,7 +76,7 @@ def text_checker(word, text):
 ################# CSV Stuff ############################
 
 def csv_generator(restaurant_data, csv_name):
-    csv_columns = ['Name', 'Boolean']
+    csv_columns = ['Name', 'Sale', 'URL']
     csv_file = csv_name
     try:
         with open(csv_file, 'w', newline='') as csvfile:
