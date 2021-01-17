@@ -147,9 +147,9 @@ def main():
     csv_generator(restaurant_data, csv_name)
  
     # loop over resulting dictionary and print values to check output
-    print("\nResults of search for " + test_word.lower() + ": ")
-    for item in restaurant_data:
-        print(item)
+#    print("\nResults of search for " + test_word.lower() + ": ")
+#    for item in restaurant_data:
+#        print(item)
 
 
 main()
