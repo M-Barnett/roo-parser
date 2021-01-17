@@ -32,9 +32,9 @@ need to instead use the command `python3`.</br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Replace `$LOCATION` with the location you want to search for.</br>
 </br>
 _N.B._ The `$LOCATION` must be in the
-form of the url, e.g. 
-</br> for all London restaurant locations you would use `london`
-</br> for more specific options could do `london/bexleyheath` or `aberdeen/hazelhead`
+form of the url, so examples would be:
+* for all London restaurant locations you would use `london`
+* for more specific options could do `london/bexleyheath` or `aberdeen/hazelhead`
 </br>
 
 **CSV Name**</br>
