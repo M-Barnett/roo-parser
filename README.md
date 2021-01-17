@@ -14,7 +14,7 @@ All packages not mentioned here should be included in Python 3.</br>
 Install the BeautifulSoup package (Python 3) for parsing the html.</br>
 `pip3 install beautifulsoup4`
 </br>
-Install the requests package (Python 3).</br>
+Install the requests package (Python 3) for http requests.</br>
 `pip3 install requests`
 
 ## Use
