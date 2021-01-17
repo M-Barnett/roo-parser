@@ -48,7 +48,7 @@ the end of it, e.g.
 </br> `csvexample`
 </br>
 
-</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; As of January 17, 2020 you must have a `$LOCATION` argument to have a
+As of January 17, 2020 you must have a `$LOCATION` argument to have a
 `$CSV_NAME` argument.
 
 ### Output
