@@ -27,32 +27,42 @@ _N.B._ if your python command is not mapped to Python 3 you may
 need to instead use the command `python3`.</br>
 
 ### Additional Arguments
-**Word**</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Command: `python parser.py $WORD`</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Replace `$WORD` with the word you want to search for.</br>
+**Location**</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Command: `python parser.py $LOCATION`</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Replace `$LOCATION` with the location you want to search for.</br>
+
+</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _N.B._ The `$LOCATION` must be in the
+form of the url, e.g. 
+</br>`london`
+</br>`london/bexleyheath`
+</br>`aberdeen/hazelhead`
+</br>
 
 **CSV Name**</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Comand: `python parser.py $WORD $CSV_NAME`</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Replace `$WORD` with the word you want to search for.</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Comand: `python parser.py $LOCATION $CSV_NAME`</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Replace `$LOCATION` with the location you want to search for.</br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Replace `$CSV_NAME` with the name of the file you want to save to.</br>
 </br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _N.B._ The `$CSV_NAME` should be a simple string, the code will add ".csv" to
-the end of it.
-</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; As of January 15, 2020 you must have a `$WORD` argument to have a
-`$CSV_NAME` argument, but this should hopefully be changed soon.
+the end of it, e.g.
+</br> `bexley_restaurants`
+</br> `csvexample`
+</br>
+
+</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; As of January 17, 2020 you must have a `$LOCATION` argument to have a
+`$CSV_NAME` argument.
 
 ### Output
 The code is currently limited to only parse a few pages for efficient testing,
-to test more values, change or remove the indices in the `restaurant_checker`
-function in `parser.py` where specified (line 41).
+to test more values, change or remove the indices for `href_links` in the for
+loop of the `restaurant_checker` function in `parser.py` where specified 
+(~line 46).
+</br>
 
-The code writes the results to a csv file with Name and a Boolean fields
-displaying whether or not the word was found for a given restaurant. 
+The code writes the results to a csv file with Name, Sale, and URL fields
+displaying whether or not a given restaurant is running a sale. 
 
 ## Next Steps
-* Add location specification "menu/london/..."
-* Add link to restaurant on CSV for easy access
-* Add flagging for arguments so `$CSV_NAME`can be specified without `$WORD`
-* Separate restaurants by region
-* Allow for specific restaurant selection?
-* Adjust to find more than just text
+* Add flagging for arguments so `$CSV_NAME`can be specified without `$LOCATION`
+* Potentially make multiple locations write to different csv pages

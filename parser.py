@@ -12,7 +12,7 @@ from bs4 import BeautifulSoup
 source_url = "https://deliveroo.co.uk/sitemap"
 
 ########## Functions for crawling, scraping, parsing ############
-def restaurant_finder():
+def restaurant_finder(location):
     """ Function to find each restaurant link on the main sitemap page """
     href_links = []
     
@@ -21,9 +21,14 @@ def restaurant_finder():
     soup = BeautifulSoup(source_code, 'html.parser')
     
     # restaurants are stored in <a> blocks and include 'menu' string in href
+    search_string = 'menu/' + location
     for a in soup.findAll('a'):
-        if 'menu' in a['href']:
+        if search_string in a['href']:
             href_links.append(a)
+        # if you want to search more locations than just one, repeat the
+        # following block of code with the location string you want
+#        elif 'menu/london/bexleyheath' in a['href']:
+#            href_links.append(a)
 
     # print statements here are just to show the retrieved urls look right
 #    print("href_links are: ")
@@ -84,59 +89,65 @@ def csv_generator(restaurant_data, csv_name):
             res_writer.writeheader()
             for data in restaurant_data:
                 res_writer.writerow(data)
-        print("CSV successfully written to " + csv_file)
+        print("\nCSV successfully written to " + csv_file)
     except IOError:
         print("I/O error occurred while writing csv")
 
 ############### Run Management #####################
+
+def io_printer(test_word, location_choice, csv_name):
+    """ Function to neatly print io statements """
+    print("Searching for \"" + test_word + "\"...")
+    print("Searching in \"" + location_choice + "\"...")
+    print("Output will be stored in " + csv_name + "...\n")
+    return
+
 
 
 def main():
     
     # IO Stuff
     # default values for test_word and csv_name
-    test_word = "chicken"
+    test_word = "T&Cs apply"
+    location_choice = "london/bexleyheath"
     csv_name = "restaurant_test.csv"
 
+
     if len(sys.argv) == 1:
-        print("Default option selected, running with test word \"" + test_word + "\"...")
-        print("Output will be stored in " + csv_name + "...\n")
+        print("Default option selected...")
+        io_printer(test_word, location_choice, csv_name)
     elif len(sys.argv) == 2:
         try:
-            test_word = str(sys.argv[1])
-            print("Running with test word \"" + test_word + "\"...")
-            print("Output will be stored in " + csv_name + "...\n")
+            location_choice = str(sys.argv[1])
+            print("Custom option selected...")
+            io_printer(test_word, location_choice, csv_name)
         except:
-            print("Something was wrong with your input, proceeding with default")
-            print("Default option selected, running with test word \"" + test_word + "\"...")
-            print("Output will be stored in " + csv_name + "...\n")
+            print("Something was wrong with your input, proceeding with default...")
+            print("Default option selected...")
+            io_printer(test_word, location_choice, csv_name) 
     elif len(sys.argv) == 3:
         try:
-            test_word = str(sys.argv[1])
+            location_choice = str(sys.argv[1])
             csv_name = str(sys.argv[2]) + ".csv"
-            print("Running with test word \"" + test_word + "\"...")
-            print("Output will be stored in " + csv_name + "...\n")
+            io_printer(test_word, location_choice, csv_name)
         except:
             print("Something was wrong with your input, proceeding with default")
-            print("Default option selected, running with test word \"" + test_word + "\"...") 
-            print("Output will be stored in " + csv_name + "...\n")
-
-
+            print("Default option selected...")
+            io_printer(test_word, location_choice, csv_name)
     else:
         print("Something is wrong with your input, proceeding with default")
-        print("Default option selected, running with test word \"" + test_word + "\"...\n") 
-
+        print("Default option selected...")
+        io_printer(test_word, location_choice, csv_name)
 
     # Running the Functions
-    restaurant_html = restaurant_finder()
+    restaurant_html = restaurant_finder(location_choice)
     restaurant_data = restaurant_checker(test_word, restaurant_html)
     csv_generator(restaurant_data, csv_name)
-
-    print("\nResults of search for " + test_word.lower() + ": ")
  
-    # loop over resulting dictionary and print values
-    for item in restaurant_data:
-        print(item)
+    # loop over resulting dictionary and print values to check output
+#    print("\nResults of search for " + test_word.lower() + ": ")
+#    for item in restaurant_data:
+#        print(item)
 
 
 main()
