@@ -18,7 +18,7 @@ Install the requests package (Python 3).</br>
 `pip3 install requests`
 
 ## Use
-The proof of concept is fairly basic, as of January 15, 2021 the use is as follows:
+The proof of concept is fairly basic, as of January 17, 2021 the use is as follows:
 
 ### Default Run
 Command: `python parser.py` </br>
