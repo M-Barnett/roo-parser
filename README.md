@@ -58,8 +58,9 @@ loop of the `restaurant_checker` function in `parser.py` where specified
 (~line 46).
 </br>
 
-The code writes the results to a csv file with Name, Sale, and URL fields
-displaying whether or not a given restaurant is running a sale. 
+The code writes the results to a csv file with Name, Sale, URL, and Location 
+fields where Sale is a boolean displaying whether or not a given restaurant is
+running a sale. 
 
 ## Next Steps
 * Add flagging for arguments so `$CSV_NAME`can be specified without `$LOCATION`

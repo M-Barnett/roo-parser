@@ -43,12 +43,15 @@ def restaurant_checker(word, href_links):
     # loop over the list of restaurant pages
     for link in href_links[0:10]: # change/remove indices to parse more restaurants
         # need to convert and extract info from links
-        restaurant_dictionary = {'Name' : [], 'Sale' : [], 'URL' : []}
-        restaurant_url = link['href']
+        restaurant_dictionary = {'Name' : [], 'Sale' : [], 'URL' : [], 'Location' : []}
+        restaurant_url = str(link['href'])
         restaurant_name = str(link.string)
+        # use regex pattern to get locations out of href string 
+        res_pattern = "menu/london/(.*?)/" # change the pattern if not london based
+        restaurant_location = re.search(res_pattern, restaurant_url).group(1)
 
         # parse each restaurants individual url
-        total_url = "https://deliveroo.co.uk" + str(restaurant_url)
+        total_url = "https://deliveroo.co.uk" + restaurant_url
         # use request to retrieve html source code, then BeautifulSoup to parse
         restaurant_source_code = requests.get(total_url).text
         soup2 = BeautifulSoup(restaurant_source_code, 'html.parser')
@@ -62,6 +65,7 @@ def restaurant_checker(word, href_links):
         restaurant_dictionary['Name'] = restaurant_name
         restaurant_dictionary['Sale'] = page_check
         restaurant_dictionary['URL'] = total_url
+        restaurant_dictionary['Location'] = restaurant_location
         restaurant_data.append(restaurant_dictionary)
 
     return restaurant_data
@@ -79,7 +83,7 @@ def text_checker(word, text):
 ################# CSV Stuff ############################
 
 def csv_generator(restaurant_data, csv_name):
-    csv_columns = ['Name', 'Sale', 'URL']
+    csv_columns = ['Name', 'Sale', 'URL', 'Location']
     csv_file = csv_name
     try:
         with open(csv_file, 'w', newline='') as csvfile:
@@ -143,9 +147,9 @@ def main():
     csv_generator(restaurant_data, csv_name)
  
     # loop over resulting dictionary and print values to check output
-#    print("\nResults of search for " + test_word.lower() + ": ")
-#    for item in restaurant_data:
-#        print(item)
+    print("\nResults of search for " + test_word.lower() + ": ")
+    for item in restaurant_data:
+        print(item)
 
 
 main()
