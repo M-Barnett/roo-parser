@@ -2,9 +2,7 @@
 Proof of concept parser to enter each webpage and check for a specific word
 """
 import requests
-import collections
 import re
-import time
 import csv
 import sys
 from bs4 import BeautifulSoup
